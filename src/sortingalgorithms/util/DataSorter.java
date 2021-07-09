@@ -12,9 +12,7 @@ public class DataSorter {
             key = arr[i];
             j = i - 1;
             while (j >= 0 && key < arr[j]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                swap(arr, i, j);
                 j--;
             }
         }
@@ -30,18 +28,21 @@ public class DataSorter {
             if (intArray[j] <= pi) {
                 i++;
                 // swap intArray[i] and intArray[j]
-                int temp = intArray[i];
-                intArray[i] = intArray[j];
-                intArray[j] = temp;
+                swap(intArray, i, j);
             }
         }
 
         // swap intArray[i+1] and intArray[high] (or pi)
-        int temp = intArray[i+1];
-        intArray[i+1] = intArray[high];
-        intArray[high] = temp;
+        swap(intArray, i+1, high);
 
         return i+1;
+    }
+
+    //swaps the values in given array indices
+    private static void swap(int[] intArray, int i, int j) {
+        int temp = intArray[i];
+        intArray[i] = intArray[j];
+        intArray[j] = temp;
     }
 
 
