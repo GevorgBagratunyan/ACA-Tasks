@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class RunTheTask {
     public static void main(String[] args) {
         int arr1[] = {-3,-3,4,-1,6,8,0,5,-3};
-        int arr2[] = {3,3,3,12,-8,4,-1,6,8,0,5,-3};
+        int arr2[] = {3,3,3,12,-8,2,4,-1,6,8,0,5,-3};
 
 
         System.out.println("Array 1 BEFORE sort :\n" + Arrays.toString(arr1));
