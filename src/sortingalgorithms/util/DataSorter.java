@@ -1,4 +1,4 @@
-package sortingalgorithms;
+package sortingalgorithms.util;
 
 public class DataSorter {
 
