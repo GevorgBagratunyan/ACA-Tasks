@@ -5,7 +5,7 @@ public class SortingUtil {
     private SortingUtil() {
     }
 
-    public static String insertionSort(char[] array) {
+    public static void insertionSort(char[] array) {
 
         for (int i = array.length - 1; i > 0; i--) {
             if (array[i] < array[i - 1]) {
@@ -22,8 +22,6 @@ public class SortingUtil {
             }
             array[j] = temp;
         }
-
-        return new String(array);
     }
 
     private static void swap(char[] array, int i, int j) {
