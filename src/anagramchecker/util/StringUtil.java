@@ -19,26 +19,10 @@ public class StringUtil {
         char[] arr1 = aLow.toCharArray();
         char[] arr2 = bLow.toCharArray();
 
-        insertionSort(arr1);
-        insertionSort(arr2);
-
-//        Arrays.sort(arr1);
-//        Arrays.sort(arr2);
+        SortingUtil.insertionSort(arr1);
+        SortingUtil.insertionSort(arr2);
 
         return Arrays.equals(arr1, arr2);
     }
 
-    static void insertionSort(char[] arr) {
-        int i, j, key;
-        for (i = 1; i < arr.length; i++) {
-            key = arr[i];
-            j = i - 1;
-            while (j >= 0 && key < arr[j]) {
-                char temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                j--;
-            }
-        }
-    }
 }

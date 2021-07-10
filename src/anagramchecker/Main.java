@@ -8,15 +8,13 @@ public class Main {
         String b = "Java";
 
         String c = "ARmenIan CoDE ACAdemy";
-        String d = "ARMENIAN code acaDEMY";
+        String d = "menARiAn cedo acaDEMY";
 
         boolean isAnagrams1 = StringUtil.isAnagram(a, b);
         boolean isAnagrams2 = StringUtil.isAnagram(c, d);
 
         printResult(a, b, isAnagrams1);
         printResult(c, d, isAnagrams2);
-
-
     }
 
     static void printResult(String s1, String s2, boolean isAnagrams) {
