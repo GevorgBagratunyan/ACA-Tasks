@@ -1,19 +1,19 @@
 package stringintroduction;
 
-import stringintroduction.util.StringAnalyzer;
+import stringintroduction.util.StringUtil;
 
 public class Main {
     public static void main(String[] args) {
         String a = "hello";
         String b = "java";
 
-        int sum = StringAnalyzer.sumOfLengths(a,b);
+        int sum = StringUtil.sumOfLengths(a,b);
         System.out.println("Sum of \"String a\" and \"String b\" lengths is : " + sum);
 
-        String isLarger = StringAnalyzer.isLarger(a,b);
+        String isLarger = StringUtil.isLarger(a,b);
         System.out.println("Is \"String a\" larger than \"String b\"? : " + isLarger);
 
-        String capitalized = StringAnalyzer.capitalize(a,b);
+        String capitalized = StringUtil.capitalize(a,b);
         System.out.println("Capitalized and merged strings : " + capitalized);
     }
 }

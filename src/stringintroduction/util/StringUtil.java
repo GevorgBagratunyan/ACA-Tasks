@@ -1,8 +1,8 @@
 package stringintroduction.util;
 
-public class StringAnalyzer {
+public class StringUtil {
 
-    private StringAnalyzer(){}
+    private StringUtil(){}
 
     public static int sumOfLengths(String a, String b){
         return a.length()+b.length();
