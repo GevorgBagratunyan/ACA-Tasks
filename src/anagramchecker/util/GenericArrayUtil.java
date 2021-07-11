@@ -3,10 +3,8 @@ package anagramchecker.util;
 public class GenericArrayUtil<E> {
     private E[] elements;
 
-    public GenericArrayUtil() {
-    }
-
-    public E[] insertionSort() {
+    public E[] insertionSort(E[] array) {
+        elements=array;
         int n = elements.length;
         for (int j = 1; j < n; j++) {
             E key = elements[j];
@@ -17,11 +15,6 @@ public class GenericArrayUtil<E> {
             }
             elements[i + 1] = key;
         }
-
         return elements;
-    }
-
-    public void setElements(E[] elements) {
-        this.elements = elements;
     }
 }

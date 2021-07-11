@@ -15,11 +15,8 @@ public class StringUtil {
             return false;
         }
 
-        String aLow = a.toLowerCase();
-        String bLow = b.toLowerCase();
-
-        char[] arr1 = aLow.toCharArray();
-        char[] arr2 = bLow.toCharArray();
+        char[] arr1 = a.toLowerCase().toCharArray();
+        char[] arr2 = b.toLowerCase().toCharArray();
 
         SortingUtil.insertionSort(arr1);
         SortingUtil.insertionSort(arr2);
@@ -33,15 +30,13 @@ public class StringUtil {
             return false;
         }
 
-        Character[] chars1 = initArray(a.toLowerCase());
-        Character[] chars2 = initArray(b.toLowerCase());
+        Character[] arr1 = initArray(a.toLowerCase());
+        Character[] arr2 = initArray(b.toLowerCase());
 
-        util.setElements(chars1);
-        util.insertionSort();
-        util.setElements(chars2);
-        util.insertionSort();
+        util.insertionSort(arr1);
+        util.insertionSort(arr2);
 
-        return Arrays.equals(chars1, chars2);
+        return Arrays.equals(arr1, arr2);
     }
 
 
