@@ -4,7 +4,6 @@ public class GenericArrayUtil<E> {
     private E[] elements;
 
     public GenericArrayUtil() {
-
     }
 
     public E[] insertionSort() {
