@@ -5,28 +5,16 @@ public class SortingUtil {
     private SortingUtil() {
     }
 
-    public static void insertionSort(char[] array) {
-
-        for (int i = array.length - 1; i > 0; i--) {
-            if (array[i] < array[i - 1]) {
-                swap(array, i, i - 1);
+    public static void insertionSort(char array[]) {
+        int n = array.length;
+        for (int j = 1; j < n; j++) {
+            int key = array[j];
+            int i = j - 1;
+            while ((i > -1) && (array[i] > key)) {
+                array[i + 1] = array[i];
+                i--;
             }
+            array[i + 1] = (char) key;
         }
-
-        for (int i = 2; i < array.length; i++) {
-            char temp = array[i];
-            int j = i;
-            while (temp < array[j - 1]) {
-                array[j] = array[j - 1];
-                j--;
-            }
-            array[j] = temp;
-        }
-    }
-
-    private static void swap(char[] array, int i, int j) {
-        char temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 }
