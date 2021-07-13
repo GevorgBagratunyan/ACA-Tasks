@@ -1,4 +1,4 @@
-package immutability.automobile;
+package immutability.model;
 
 public final class Car {
     private final int productionYear;
@@ -13,8 +13,7 @@ public final class Car {
         this.productionYear = productionYear;
         this.mark = mark;
         this.model = model;
-        Engine temp = new Engine(engine.getHorsePower(), engine.getWeight(), engine.getMileage());
-        this.engine = temp;
+        this.engine = engine.copy();
     }
 
     public int getProductionYear() {
@@ -30,6 +29,6 @@ public final class Car {
     }
 
     public Engine getEngine() {
-        return new Engine(this.engine.getHorsePower(), this.engine.getWeight(), this.engine.getMileage());
+        return this.engine.copy();
     }
 }

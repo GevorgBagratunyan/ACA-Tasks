@@ -1,4 +1,4 @@
-package immutability.automobile;
+package immutability.model;
 
 public class Engine {
     private int horsePower;
@@ -33,5 +33,9 @@ public class Engine {
 
     public void setMileage(int mileage) {
         this.mileage = mileage;
+    }
+
+    public Engine copy() {
+        return new Engine(this.horsePower, this.weight, this.mileage);
     }
 }

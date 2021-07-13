@@ -1,7 +1,7 @@
 package immutability;
 
-import immutability.automobile.Car;
-import immutability.automobile.Engine;
+import immutability.model.Car;
+import immutability.model.Engine;
 
 public class Main {
     public static void main(String[] args) {
