@@ -24,7 +24,9 @@ public class ConsoleManager {
         System.out.println("Please Enter the ID of the parent group, or press 'Enter'");
         String id = scanner.nextLine();
         if (!id.isEmpty()) {
-            group.setParentGroup(GroupsManager.getByID(Integer.parseInt(id)));
+            int groupID = Integer.parseInt(id);
+            group.setParentGroup(GroupsManager.getByID(groupID));
+            GroupsManager.getByID(groupID).addSubGroup(group);
         }
 
         System.out.println("Please input 'continue' if You want to finish creation of groups, and go to next step, or press 'Enter'");

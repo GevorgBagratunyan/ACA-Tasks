@@ -7,10 +7,12 @@ public class Group {
     private int id;
     private String name;
     private Group parentGroup;
+    private List<Group> subGroups;
     private List<Item> items;
 
     public Group() {
         items = new ArrayList<>();
+        subGroups = new ArrayList<>();
     }
 
     public int getId() {
@@ -45,8 +47,11 @@ public class Group {
         return items;
     }
 
-    @Override
-    public String toString(){
-        return this.name;
+    public void addSubGroup(Group group){
+        subGroups.add(group);
+    }
+
+    public List<Group> getSubGroups() {
+        return subGroups;
     }
 }
