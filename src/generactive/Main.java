@@ -1,11 +1,12 @@
 package generactive;
 
 import generactive.util.GroupsManager;
-import generactive.util.ItemBuilder;
+import generactive.util.ItemCreator;
 
 public class Main {
     public static void main(String[] args) {
-        ItemBuilder.build();
+
+        ItemCreator.create();
         GroupsManager.print();
     }
 }

@@ -4,54 +4,77 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
-    private int id;
-    private String name;
-    private Group parentGroup;
-    private List<Group> subGroups;
-    private List<Item> items;
+    private final int id;
+    private final String groupName;
+    private final Group parentGroup;
+    private final List<Group> subGroups;
+    private final List<Item> items;
 
-    public Group() {
-        items = new ArrayList<>();
-        subGroups = new ArrayList<>();
+    public Group(GroupBuilder builder) {
+        this.id = builder.id;
+        this.groupName = builder.groupName;
+        this.parentGroup = builder.parentGroup;
+        this.subGroups = builder.subGroups;
+        this.items = builder.items;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getGroupName() {
+        return groupName;
     }
 
     public Group getParentGroup() {
         return parentGroup;
     }
 
-    public void setParentGroup(Group parentGroup) {
-        this.parentGroup = parentGroup;
-    }
-
-    public void addItem(Item item) {
-        items.add(item);
+    public List<Group> getSubGroups() {
+        return subGroups;
     }
 
     public List<Item> getItems() {
         return items;
     }
 
-    public void addSubGroup(Group group){
-        subGroups.add(group);
+    //!!!!!!!!
+//    void printContent() {
+//           ******* code
+//        child.printContent();
+//    }
+
+    public static class GroupBuilder {
+
+        private int id;
+        private String groupName;
+        private Group parentGroup;
+        private final List<Group> subGroups;
+        private final List<Item> items;
+
+        public GroupBuilder() {
+            this.subGroups = new ArrayList<>();
+            this.items = new ArrayList<>();
+        }
+
+        public GroupBuilder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public GroupBuilder setGroupName(String groupName) {
+            this.groupName = groupName;
+            return this;
+        }
+
+        public GroupBuilder setParentGroup(Group parentGroup) {
+            this.parentGroup = parentGroup;
+            return this;
+        }
+
+        public Group build() {
+            return new Group(this);
+        }
     }
 
-    public List<Group> getSubGroups() {
-        return subGroups;
-    }
 }

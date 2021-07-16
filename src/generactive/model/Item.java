@@ -1,31 +1,57 @@
 package generactive.model;
 
 public class Item {
-    private String name;
-    private int price;
-    private Group group;
+    private final String name;
+    private final int price;
+    private final Group group;
 
-    public void setGroup() {
-        this.group = group;
-    }
-
-    public Group getGroup() {
-        return group;
+    public Item(ItemBuilder builder) {
+        this.name = builder.name;
+        this.price = builder.price;
+        this.group = builder.group;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public Group getGroup() {
+        return group;
+    }
+
+    //!!!!!!!!
+//    void printContent() {
+//           ******* code
+//        child.printContent();
+//    }
+
+    public static class ItemBuilder {
+
+        private String name;
+        private int price;
+        private Group group;
+
+        public ItemBuilder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ItemBuilder setPrice(int price) {
+            this.price = price;
+            return this;
+        }
+
+        public ItemBuilder setGroup(Group group) {
+            this.group = group;
+            return this;
+        }
+
+        public Item build() {
+            return new Item(this);
+        }
     }
 }

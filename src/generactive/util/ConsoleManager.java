@@ -1,7 +1,6 @@
 package generactive.util;
 
 import generactive.model.Group;
-import generactive.model.Item;
 
 import java.util.Scanner;
 
@@ -9,49 +8,62 @@ public class ConsoleManager {
     private static Scanner scanner = new Scanner(System.in);
     private static String userCommand = "";
 
+    //Group fields
+    private static String groupName;
+    private static Group parentGroup;
+
+    //Item fields
+    private static String itemName;
+    private static int price;
+
     private ConsoleManager() {
     }
 
-    //At first in console we create groups hierarchy
-    public static Group createGroup() {
-        Group group = new Group();
-
+    //At first in console we collect some mandatory information about Group
+    public static void readGroup() {
         System.out.println("Please Enter the name of Group");
-        String name = scanner.nextLine();
-        group.setName(name);
-        group.setId(GroupsManager.getId());
+        groupName = scanner.nextLine();
 
         System.out.println("Please Enter the ID of the parent group, or press 'Enter'");
         String id = scanner.nextLine();
         if (!id.isEmpty()) {
             int groupID = Integer.parseInt(id);
-            group.setParentGroup(GroupsManager.getByID(groupID));
-            GroupsManager.getByID(groupID).addSubGroup(group);
+            parentGroup = GroupsManager.getByID(groupID);
         }
 
         System.out.println("Please input 'continue' if You want to finish creation of groups, and go to next step, or press 'Enter'");
-        userCommand = scanner.nextLine();
-        return group;
+        userCommand = scanner.nextLine().toUpperCase();
     }
 
-    //Then we create an Item and add it to defined group
-    public static Item createItem() {
-        Item item = new Item();
+    //Then we collect some mandatory information about Item
+    public static void readItem() {
 
         System.out.println("Please Enter the name of Item");
-        String name = scanner.nextLine();
+        itemName = scanner.nextLine();
         System.out.println("Please Enter the price of Item");
-        int price = Integer.parseInt(scanner.nextLine());
-
-        item.setName(name);
-        item.setPrice(price);
+        price = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Please input 'exit' if You want to finish adding Items, or press 'Enter'");
-        userCommand = scanner.nextLine();
-        return item;
+        userCommand = scanner.nextLine().toUpperCase();
     }
 
     public static String getUserCommand() {
         return userCommand;
+    }
+
+    public static String getGroupName() {
+        return groupName;
+    }
+
+    public static Group getParentGroup() {
+        return parentGroup;
+    }
+
+    public static String getItemName() {
+        return itemName;
+    }
+
+    public static int getPrice() {
+        return price;
     }
 }
