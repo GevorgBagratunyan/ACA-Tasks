@@ -28,21 +28,7 @@ public class GroupsManager {
 
     public static void print() {
         for (Map.Entry<Integer, Group> pair : groups.entrySet()) {
-            System.out.println("Group ID : " + pair.getKey() + "\nName : " + pair.getValue().getGroupName());
-            System.out.print("Items : ");
-            for (Item item : pair.getValue().getItems()) {
-                System.out.print(item.getName() + " ");
-            }
-            System.out.println();
-            System.out.print("Subgroups in this Group are : ");
-            for (Group group : pair.getValue().getSubGroups()) {
-                System.out.println(group.getGroupName());
-                System.out.print(" : Items : ");
-                for (Item item : pair.getValue().getItems()) {
-                    System.out.print(item.getName() + " ");
-                }
-            }
-            System.out.println("\n____________________");
+            pair.getValue().printContent();
         }
     }
 }

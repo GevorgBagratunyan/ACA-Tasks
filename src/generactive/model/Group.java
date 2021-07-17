@@ -38,11 +38,25 @@ public class Group {
         return items;
     }
 
-    //!!!!!!!!
-//    void printContent() {
-//           ******* code
-//        child.printContent();
-//    }
+
+    public void printContent() {
+        System.out.println("Group ID : " + id + "\nName : " + groupName);
+        System.out.print("Items in this Group -> ");
+
+        if (!items.isEmpty()) {
+            for (Item item : items) {
+                System.out.print(item.getName() + " ");
+            }
+        } else System.out.println();
+
+        if (!subGroups.isEmpty()) {
+            System.out.println("Subgroups in this Group -> ");
+            for (Group group : subGroups) {
+                group.printContent();
+            }
+        } else System.out.println();
+        System.out.println("\n____________________");
+    }
 
     public static class GroupBuilder {
 

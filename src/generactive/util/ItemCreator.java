@@ -39,7 +39,6 @@ public class ItemCreator {
                 if (ConsoleManager.getUserCommand().equals("EXIT")) {
                     break;
                 }
-
             }
         }
     }
