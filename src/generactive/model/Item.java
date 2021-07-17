@@ -23,6 +23,13 @@ public class Item {
         return group;
     }
 
+    public void printContent() {
+        System.out.println("Item group : " + this.group.getGroupName());
+        System.out.println("Item name : " + this.name);
+        System.out.println("Item price : " + this.price);
+        System.out.println("____________________");
+    }
+
     public static class ItemBuilder {
 
         private String name;

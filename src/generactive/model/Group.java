@@ -55,7 +55,7 @@ public class Group {
                 group.printContent();
             }
         } else System.out.println();
-        System.out.println("\n____________________");
+        System.out.println("____________________");
     }
 
     public static class GroupBuilder {

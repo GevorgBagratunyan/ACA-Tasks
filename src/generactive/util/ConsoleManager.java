@@ -19,7 +19,7 @@ public class ConsoleManager {
     private ConsoleManager() {
     }
 
-    //At first in console we collect some mandatory information about Group
+    //At first in console we collect all required information about Group
     public static void readGroup() {
         System.out.println("Please Enter the name of Group");
         groupName = scanner.nextLine();
@@ -28,14 +28,14 @@ public class ConsoleManager {
         String id = scanner.nextLine();
         if (!id.isEmpty()) {
             int groupID = Integer.parseInt(id);
-            parentGroup = GroupsManager.getByID(groupID);
+            parentGroup = Storage.getByID(groupID);
         }
 
         System.out.println("Please input 'continue' if You want to finish creation of groups, and go to next step, or press 'Enter'");
         userCommand = scanner.nextLine().toUpperCase();
     }
 
-    //Then we collect some mandatory information about Item
+    //Then we collect all required information about Item
     public static void readItem() {
 
         System.out.println("Please Enter the name of Item");

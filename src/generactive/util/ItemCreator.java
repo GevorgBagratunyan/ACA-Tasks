@@ -10,7 +10,7 @@ public class ItemCreator {
             ConsoleManager.readGroup();
             String groupName = ConsoleManager.getGroupName();
             Group parentGroup = ConsoleManager.getParentGroup();
-            int id = GroupsManager.getId();
+            int id = Storage.getId();
 
             Group group = new Group.GroupBuilder()
                     .setGroupName(groupName)
@@ -21,7 +21,7 @@ public class ItemCreator {
             if (parentGroup != null) {
                 parentGroup.getSubGroups().add(group);
             }
-            GroupsManager.addGroup(group);
+            Storage.addGroup(group);
 
             if (ConsoleManager.getUserCommand().equals("CONTINUE")) {
                 ConsoleManager.readItem();
