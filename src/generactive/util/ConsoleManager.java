@@ -7,7 +7,7 @@ import generactive.model.enums.Resolution;
 import java.util.Scanner;
 
 public class ConsoleManager {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
     private static String userCommand = "";
 
     //Group fields
@@ -26,17 +26,17 @@ public class ConsoleManager {
     //At first in console we collect all required information about Group
     public static void readGroup() {
         System.out.println("Please Enter the name of Group");
-        groupName = scanner.nextLine();
+        groupName = SCANNER.nextLine();
 
         System.out.println("Please Enter the ID of the parent group, or press 'Enter'");
-        String id = scanner.nextLine();
+        String id = SCANNER.nextLine();
         if (!id.isEmpty()) {
             int groupID = Integer.parseInt(id);
             parentGroup = Storage.getByID(groupID);
         }
 
         System.out.println("Please input 'continue' if You want to finish creation of groups, and go to next step, or press 'Enter'");
-        userCommand = scanner.nextLine().toUpperCase();
+        userCommand = SCANNER.nextLine().toUpperCase();
     }
 
     //Then we collect all required information about Item
@@ -44,16 +44,16 @@ public class ConsoleManager {
 
         //name
         System.out.println("Please input the name of Item");
-        itemName = scanner.nextLine();
+        itemName = SCANNER.nextLine();
 
         //price
         System.out.println("Please input the price of Item");
-        price = Double.parseDouble(scanner.nextLine());
+        price = Double.parseDouble(SCANNER.nextLine());
 
         //complexity
         System.out.println("Please input the complexity of item (1 or 2) if you want to create GenerativeItem, " +
                 "or press 'Enter' to create StockItem type");
-        String comp = scanner.nextLine();
+        String comp = SCANNER.nextLine();
         if (!comp.equals("1") && !comp.equals("2") && !comp.isEmpty()) {
             System.out.println("Wrong input. Creating StockItem");
         }
@@ -64,7 +64,7 @@ public class ConsoleManager {
         //resolution
         System.out.println("Please input resolution of visual (1 for HD, 2 for FHD, 3 for UHD) " +
                 "or press 'Enter' to set resolution to HD by default");
-        String res = scanner.nextLine();
+        String res = SCANNER.nextLine();
         if (res.isEmpty()) {
             resolution = Resolution.HD;
         }
@@ -85,7 +85,7 @@ public class ConsoleManager {
 
         //command
         System.out.println("Please input 'exit' if You want to finish adding Items, or press 'Enter'");
-        userCommand = scanner.nextLine().toUpperCase();
+        userCommand = SCANNER.nextLine().toUpperCase();
     }
 
     public static String getUserCommand() {

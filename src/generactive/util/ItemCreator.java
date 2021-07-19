@@ -17,9 +17,9 @@ public class ItemCreator {
             Group parentGroup = ConsoleManager.getParentGroup();
 
             Group group = new Group.GroupBuilder()
-                    .setGroupName(groupName)
-                    .setParentGroup(parentGroup)
-                    .setID()
+                    .groupName(groupName)
+                    .parentGroup(parentGroup)
+                    .id()
                     .build();
 
             if (parentGroup != null) {
@@ -39,20 +39,20 @@ public class ItemCreator {
 
                 if (complexity == null) {
                     item = new StockItem.StockItemBuilder()
-                            .setID()
-                            .setName(itemName)
-                            .setPrice(itemPrice)
-                            .setGroup(group)
-                            .setConfiguration(cfg)
+                            .id()
+                            .name(itemName)
+                            .price(itemPrice)
+                            .group(group)
+                            .configuration(cfg)
                             .build();
                 } else {
                     item = new GenerativeItem.GenerativeItemBuilder()
-                            .setID()
-                            .setName(itemName)
-                            .setPrice(itemPrice)
-                            .setGroup(group)
-                            .setConfiguration(cfg)
-                            .setComplexity(complexity)
+                            .id()
+                            .name(itemName)
+                            .price(itemPrice)
+                            .group(group)
+                            .configuration(cfg)
+                            .complexity(complexity)
                             .build();
                 }
 

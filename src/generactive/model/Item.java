@@ -1,10 +1,10 @@
 package generactive.model;
 
 public class Item {
-    private int id;
-    private String name;
-    private double price;
-    private Group group;
+    private final int id;
+    private final String name;
+    private final double price;
+    private final Group group;
     private final Configuration configuration;
 
 
@@ -37,7 +37,7 @@ public class Item {
     }
 
     public void printContent() {
-        System.out.println("Item group : " + this.group.getGroupName());
+        System.out.println("Item group : " + this.group.getName());
         System.out.println("Item name : " + this.name);
         System.out.println("Item price : " + this.price);
         System.out.println("Item ID : " + this.id);

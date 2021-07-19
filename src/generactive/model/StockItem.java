@@ -21,27 +21,27 @@ public class StockItem extends Item {
         private Group group;
         private Configuration configuration;
 
-        public StockItemBuilder setID() {
+        public StockItemBuilder id() {
             this.id = Storage.getNextItemID();
             return this;
         }
 
-        public StockItemBuilder setName(String name) {
+        public StockItemBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public StockItemBuilder setPrice(double price) {
+        public StockItemBuilder price(double price) {
             this.price = price;
             return this;
         }
 
-        public StockItemBuilder setGroup(Group group) {
+        public StockItemBuilder group(Group group) {
             this.group = group;
             return this;
         }
 
-        public StockItemBuilder setConfiguration(Configuration configuration) {
+        public StockItemBuilder configuration(Configuration configuration) {
             this.configuration = configuration;
             return this;
         }

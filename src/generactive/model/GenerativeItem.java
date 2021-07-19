@@ -27,32 +27,32 @@ public class GenerativeItem extends Item {
         private Configuration configuration;
         private Complexity complexity;
 
-        public GenerativeItemBuilder setID() {
+        public GenerativeItemBuilder id() {
             this.id = Storage.getNextItemID();
             return this;
         }
 
-        public GenerativeItemBuilder setName(String name) {
+        public GenerativeItemBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public GenerativeItemBuilder setPrice(double price) {
+        public GenerativeItemBuilder price(double price) {
             this.price = price;
             return this;
         }
 
-        public GenerativeItemBuilder setGroup(Group group) {
+        public GenerativeItemBuilder group(Group group) {
             this.group = group;
             return this;
         }
 
-        public GenerativeItemBuilder setConfiguration(Configuration configuration) {
+        public GenerativeItemBuilder configuration(Configuration configuration) {
             this.configuration = configuration;
             return this;
         }
 
-        public GenerativeItemBuilder setComplexity(Complexity complexity) {
+        public GenerativeItemBuilder complexity(Complexity complexity) {
             this.complexity = complexity;
             return this;
         }
