@@ -1,42 +1,36 @@
-package generactive.model.itemtypes;
+package generactive.model;
 
-import generactive.model.Group;
-import generactive.model.Item;
-import generactive.util.Configuration;
-import generactive.util.enums.Complexity;;
+import generactive.model.enums.Complexity;
+import generactive.util.Storage;;
 
 public class GenerativeItem extends Item {
 
-    private  final Configuration configuration;
-    private  final Complexity complexity;
+    private final Complexity complexity;
 
     public GenerativeItem(GenerativeItemBuilder builder) {
-        super(builder.name, builder.price, builder.group);
-        configuration = builder.configuration;
+        super(builder.id, builder.name, builder.price, builder.group, builder.configuration);
         complexity = builder.complexity;
     }
 
     public double calculatePrice() {
         double price = this.getPrice();
-        double resolutionCoefficient = configuration.getResolution().getResolutionCoefficient();
+        double resolutionCoefficient = this.getConfiguration().getResolution().getResolutionCoefficient();
         double comp = complexity.getValue();
         return price * resolutionCoefficient * comp;
     }
 
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
-    public Complexity getComplexity() {
-        return complexity;
-    }
-
-    public  static class GenerativeItemBuilder {
+    public static class GenerativeItemBuilder {
+        private int id;
         private String name;
         private double price;
         private Group group;
         private Configuration configuration;
         private Complexity complexity;
+
+        public GenerativeItemBuilder setID() {
+            this.id = Storage.getNextItemID();
+            return this;
+        }
 
         public GenerativeItemBuilder setName(String name) {
             this.name = name;
@@ -58,12 +52,12 @@ public class GenerativeItem extends Item {
             return this;
         }
 
-        public GenerativeItemBuilder setComplexity(Complexity complexity){
+        public GenerativeItemBuilder setComplexity(Complexity complexity) {
             this.complexity = complexity;
             return this;
         }
 
-        public GenerativeItem build(){
+        public GenerativeItem build() {
             return new GenerativeItem(this);
         }
     }

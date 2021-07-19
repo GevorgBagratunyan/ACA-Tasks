@@ -1,33 +1,30 @@
-package generactive.model.itemtypes;
+package generactive.model;
 
-import generactive.model.Group;
-import generactive.model.Item;
-import generactive.util.Configuration;
+import generactive.util.Storage;
 
 public class StockItem extends Item {
 
-    private final Configuration configuration;
-
     public StockItem(StockItemBuilder builder) {
-        super(builder.name, builder.price, builder.group);
-        configuration = builder.configuration;
+        super(builder.id, builder.name, builder.price, builder.group, builder.configuration);
     }
 
     public double calculatePrice() {
         double price = this.getPrice();
-        double resolutionCoefficient = configuration.getResolution().getResolutionCoefficient();
+        double resolutionCoefficient = this.getConfiguration().getResolution().getResolutionCoefficient();
         return price * resolutionCoefficient;
     }
 
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
-    public  static class StockItemBuilder {
+    public static class StockItemBuilder {
+        private int id;
         private String name;
         private double price;
         private Group group;
         private Configuration configuration;
+
+        public StockItemBuilder setID() {
+            this.id = Storage.getNextItemID();
+            return this;
+        }
 
         public StockItemBuilder setName(String name) {
             this.name = name;
@@ -49,7 +46,7 @@ public class StockItem extends Item {
             return this;
         }
 
-        public StockItem build(){
+        public StockItem build() {
             return new StockItem(this);
         }
     }

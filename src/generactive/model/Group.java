@@ -73,8 +73,8 @@ public class Group {
             this.items = new ArrayList<>();
         }
 
-        public GroupBuilder setId() {
-            this.id = Storage.getId();
+        public GroupBuilder setID() {
+            this.id = Storage.getNextGroupID();
             return this;
         }
 
@@ -85,6 +85,11 @@ public class Group {
 
         public GroupBuilder setParentGroup(Group parentGroup) {
             this.parentGroup = parentGroup;
+            return this;
+        }
+
+        public GroupBuilder addSubgroup(Group group){
+            this.subGroups.add(group);
             return this;
         }
 

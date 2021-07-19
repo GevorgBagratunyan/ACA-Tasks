@@ -1,11 +1,12 @@
 package generactive.util;
 
+import generactive.model.Configuration;
 import generactive.model.Group;
 import generactive.model.Item;
-import generactive.model.itemtypes.GenerativeItem;
-import generactive.model.itemtypes.StockItem;
-import generactive.util.enums.Complexity;
-import generactive.util.enums.Resolution;
+import generactive.model.GenerativeItem;
+import generactive.model.StockItem;
+import generactive.model.enums.Complexity;
+import generactive.model.enums.Resolution;
 
 public class ItemCreator {
 
@@ -18,7 +19,7 @@ public class ItemCreator {
             Group group = new Group.GroupBuilder()
                     .setGroupName(groupName)
                     .setParentGroup(parentGroup)
-                    .setId()
+                    .setID()
                     .build();
 
             if (parentGroup != null) {
@@ -36,8 +37,9 @@ public class ItemCreator {
                 cfg.setResolution(resolution);
                 Item item;
 
-                if(complexity==null){
-                    item =  new StockItem.StockItemBuilder()
+                if (complexity == null) {
+                    item = new StockItem.StockItemBuilder()
+                            .setID()
                             .setName(itemName)
                             .setPrice(itemPrice)
                             .setGroup(group)
@@ -45,6 +47,7 @@ public class ItemCreator {
                             .build();
                 } else {
                     item = new GenerativeItem.GenerativeItemBuilder()
+                            .setID()
                             .setName(itemName)
                             .setPrice(itemPrice)
                             .setGroup(group)

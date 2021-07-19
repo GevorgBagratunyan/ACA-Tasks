@@ -1,4 +1,4 @@
-package generactive.util.enums;
+package generactive.model.enums;
 
 public enum Resolution {
     HD(1.0),

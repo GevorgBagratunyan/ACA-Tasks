@@ -1,25 +1,24 @@
 package generactive;
 
 import generactive.model.Group;
-import generactive.model.itemtypes.GenerativeItem;
-import generactive.util.Basket;
-import generactive.util.Configuration;
-import generactive.util.ItemCreator;
+import generactive.model.GenerativeItem;
+import generactive.model.Basket;
+import generactive.model.Configuration;
 import generactive.util.Storage;
-import generactive.util.enums.Complexity;
-import generactive.util.enums.Resolution;
+import generactive.model.enums.Complexity;
+import generactive.model.enums.Resolution;
 
 
 public class Main {
     public static void main(String[] args) {
 
         Group g1 = new Group.GroupBuilder()
-                .setId()
+                .setID()
                 .setGroupName("Nature")
                 .build();
 
         Group g2 = new Group.GroupBuilder()
-                .setId()
+                .setID()
                 .setGroupName("Forest")
                 .setParentGroup(g1)
                 .build();
@@ -35,11 +34,18 @@ public class Main {
                 .setConfiguration(cfg)
                 .build();
 
+        g1.getSubGroups().add(g2);
+        Storage.addGroup(g1);
+        Storage.addGroup(g2);
+        g2.getItems().add(gi1);
+
+        System.out.print("Final price of gi1 Item is : ");
         Basket.calculatePrice(gi1);
 
         //This is for console input flow
         //You can uncomment this part of code below to use console input
 //        ItemCreator.create();
-//        Storage.printAllGroups();
+
+        Storage.printAllGroups();
     }
 }

@@ -7,41 +7,46 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Storage {
-    private static int id = 0;
-    private static Map<Integer, Group> groups = new HashMap<>();
-    private static Map<String, Item> items = new HashMap<>();
+    private static int groupID = 0;
+    private static int itemID = 0;
+    private static final Map<Integer, Group> GROUPS = new HashMap<>();
+    private static final Map<String, Item> ITEMS = new HashMap<>();
 
     private Storage() {
     }
 
     public static Group getByID(int id) {
-        return groups.get(Integer.valueOf(id));
+        return GROUPS.get(id);
     }
 
     public static void addGroup(Group group) {
-        groups.put(group.getId(), group);
+        GROUPS.put(group.getId(), group);
     }
 
     public static Item getByName(String itemName) {
-        return items.get(itemName);
+        return ITEMS.get(itemName);
     }
 
     public static void addItem(Item item) {
-        items.put(item.getName(),item);
+        ITEMS.put(item.getName(), item);
     }
 
-    public static int getId() {
-        return ++id;
+    public static int getNextGroupID() {
+        return ++groupID;
+    }
+
+    public static int getNextItemID() {
+        return ++itemID;
     }
 
     public static void printAllGroups() {
-        for (Map.Entry<Integer, Group> pair : groups.entrySet()) {
+        for (Map.Entry<Integer, Group> pair : GROUPS.entrySet()) {
             pair.getValue().printContent();
         }
     }
 
     public static void printAllItems() {
-        for (Map.Entry<String, Item> pair : items.entrySet()) {
+        for (Map.Entry<String, Item> pair : ITEMS.entrySet()) {
             pair.getValue().printContent();
         }
     }

@@ -1,8 +1,4 @@
-package generactive.util;
-
-import generactive.model.Item;
-import generactive.model.itemtypes.GenerativeItem;
-import generactive.model.itemtypes.StockItem;
+package generactive.model;
 
 public class Basket {
 

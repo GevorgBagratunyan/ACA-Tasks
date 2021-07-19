@@ -1,8 +1,8 @@
 package generactive.util;
 
 import generactive.model.Group;
-import generactive.util.enums.Complexity;
-import generactive.util.enums.Resolution;
+import generactive.model.enums.Complexity;
+import generactive.model.enums.Resolution;
 
 import java.util.Scanner;
 
@@ -54,31 +54,31 @@ public class ConsoleManager {
         System.out.println("Please input the complexity of item (1 or 2) if you want to create GenerativeItem, " +
                 "or press 'Enter' to create StockItem type");
         String comp = scanner.nextLine();
-        if(!comp.equals("1") && !comp.equals("2") && !comp.isEmpty()){
+        if (!comp.equals("1") && !comp.equals("2") && !comp.isEmpty()) {
             System.out.println("Wrong input. Creating StockItem");
         }
-        if(!comp.isEmpty()){
-            complexity = (Integer.parseInt(comp)==1) ? Complexity.ONE : Complexity.TWO;
+        if (!comp.isEmpty()) {
+            complexity = (Integer.parseInt(comp) == 1) ? Complexity.ONE : Complexity.TWO;
         }
 
         //resolution
         System.out.println("Please input resolution of visual (1 for HD, 2 for FHD, 3 for UHD) " +
                 "or press 'Enter' to set resolution to HD by default");
         String res = scanner.nextLine();
-        if(res.isEmpty()){
+        if (res.isEmpty()) {
             resolution = Resolution.HD;
         }
-        if(!res.equals("1") && !res.equals("2") && !res.equals("3") && !res.isEmpty()){
+        if (!res.equals("1") && !res.equals("2") && !res.equals("3") && !res.isEmpty()) {
             System.out.println("Wrong input, setting resolution to HD by default");
             resolution = Resolution.HD;
         }
-        if(!res.isEmpty()){
+        if (!res.isEmpty()) {
             int rez = Integer.parseInt(res);
-            if(rez==1){
+            if (rez == 1) {
                 resolution = Resolution.HD;
-            }else  if(rez==2){
+            } else if (rez == 2) {
                 resolution = Resolution.FHD;
-            }else if(rez==3){
+            } else if (rez == 3) {
                 resolution = Resolution.UHD;
             }
         }
