@@ -1,5 +1,7 @@
 package generactive.model;
 
+import generactive.util.Storage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,8 +73,8 @@ public class Group {
             this.items = new ArrayList<>();
         }
 
-        public GroupBuilder setId(int id) {
-            this.id = id;
+        public GroupBuilder setId() {
+            this.id = Storage.getId();
             return this;
         }
 

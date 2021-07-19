@@ -2,6 +2,10 @@ package generactive.util;
 
 import generactive.model.Group;
 import generactive.model.Item;
+import generactive.model.itemtypes.GenerativeItem;
+import generactive.model.itemtypes.StockItem;
+import generactive.util.enums.Complexity;
+import generactive.util.enums.Resolution;
 
 public class ItemCreator {
 
@@ -10,12 +14,11 @@ public class ItemCreator {
             ConsoleManager.readGroup();
             String groupName = ConsoleManager.getGroupName();
             Group parentGroup = ConsoleManager.getParentGroup();
-            int id = Storage.getId();
 
             Group group = new Group.GroupBuilder()
                     .setGroupName(groupName)
                     .setParentGroup(parentGroup)
-                    .setId(id)
+                    .setId()
                     .build();
 
             if (parentGroup != null) {
@@ -26,13 +29,29 @@ public class ItemCreator {
             if (ConsoleManager.getUserCommand().equals("CONTINUE")) {
                 ConsoleManager.readItem();
                 String itemName = ConsoleManager.getItemName();
-                int itemPrice = ConsoleManager.getPrice();
+                double itemPrice = ConsoleManager.getPrice();
+                Resolution resolution = ConsoleManager.getResolution();
+                Complexity complexity = ConsoleManager.getComplexity();
+                Configuration cfg = new Configuration();
+                cfg.setResolution(resolution);
+                Item item;
 
-                Item item = new Item.ItemBuilder()
-                        .setName(itemName)
-                        .setPrice(itemPrice)
-                        .setGroup(group)
-                        .build();
+                if(complexity==null){
+                    item =  new StockItem.StockItemBuilder()
+                            .setName(itemName)
+                            .setPrice(itemPrice)
+                            .setGroup(group)
+                            .setConfiguration(cfg)
+                            .build();
+                } else {
+                    item = new GenerativeItem.GenerativeItemBuilder()
+                            .setName(itemName)
+                            .setPrice(itemPrice)
+                            .setGroup(group)
+                            .setConfiguration(cfg)
+                            .setComplexity(complexity)
+                            .build();
+                }
 
                 group.getItems().add(item);
 

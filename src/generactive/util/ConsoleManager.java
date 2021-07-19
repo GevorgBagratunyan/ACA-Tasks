@@ -1,6 +1,8 @@
 package generactive.util;
 
 import generactive.model.Group;
+import generactive.util.enums.Complexity;
+import generactive.util.enums.Resolution;
 
 import java.util.Scanner;
 
@@ -14,7 +16,9 @@ public class ConsoleManager {
 
     //Item fields
     private static String itemName;
-    private static int price;
+    private static double price;
+    private static Complexity complexity;
+    private static Resolution resolution;
 
     private ConsoleManager() {
     }
@@ -38,11 +42,48 @@ public class ConsoleManager {
     //Then we collect all required information about Item
     public static void readItem() {
 
-        System.out.println("Please Enter the name of Item");
+        //name
+        System.out.println("Please input the name of Item");
         itemName = scanner.nextLine();
-        System.out.println("Please Enter the price of Item");
-        price = Integer.parseInt(scanner.nextLine());
 
+        //price
+        System.out.println("Please input the price of Item");
+        price = Double.parseDouble(scanner.nextLine());
+
+        //complexity
+        System.out.println("Please input the complexity of item (1 or 2) if you want to create GenerativeItem, " +
+                "or press 'Enter' to create StockItem type");
+        String comp = scanner.nextLine();
+        if(!comp.equals("1") && !comp.equals("2") && !comp.isEmpty()){
+            System.out.println("Wrong input. Creating StockItem");
+        }
+        if(!comp.isEmpty()){
+            complexity = (Integer.parseInt(comp)==1) ? Complexity.ONE : Complexity.TWO;
+        }
+
+        //resolution
+        System.out.println("Please input resolution of visual (1 for HD, 2 for FHD, 3 for UHD) " +
+                "or press 'Enter' to set resolution to HD by default");
+        String res = scanner.nextLine();
+        if(res.isEmpty()){
+            resolution = Resolution.HD;
+        }
+        if(!res.equals("1") && !res.equals("2") && !res.equals("3") && !res.isEmpty()){
+            System.out.println("Wrong input, setting resolution to HD by default");
+            resolution = Resolution.HD;
+        }
+        if(!res.isEmpty()){
+            int rez = Integer.parseInt(res);
+            if(rez==1){
+                resolution = Resolution.HD;
+            }else  if(rez==2){
+                resolution = Resolution.FHD;
+            }else if(rez==3){
+                resolution = Resolution.UHD;
+            }
+        }
+
+        //command
         System.out.println("Please input 'exit' if You want to finish adding Items, or press 'Enter'");
         userCommand = scanner.nextLine().toUpperCase();
     }
@@ -63,7 +104,15 @@ public class ConsoleManager {
         return itemName;
     }
 
-    public static int getPrice() {
+    public static double getPrice() {
         return price;
+    }
+
+    public static Complexity getComplexity() {
+        return complexity;
+    }
+
+    public static Resolution getResolution() {
+        return resolution;
     }
 }
