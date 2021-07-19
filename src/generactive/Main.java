@@ -1,12 +1,11 @@
 package generactive;
 
 import generactive.model.Group;
-import generactive.model.Item;
 import generactive.model.itemtypes.GenerativeItem;
 import generactive.util.Basket;
 import generactive.util.Configuration;
-import generactive.util.Storage;
 import generactive.util.ItemCreator;
+import generactive.util.Storage;
 import generactive.util.enums.Complexity;
 import generactive.util.enums.Resolution;
 
