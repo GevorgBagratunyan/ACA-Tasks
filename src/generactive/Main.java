@@ -4,6 +4,7 @@ import generactive.model.Group;
 import generactive.model.GenerativeItem;
 import generactive.model.Basket;
 import generactive.model.Configuration;
+import generactive.util.ItemCreator;
 import generactive.util.Storage;
 import generactive.model.enums.Complexity;
 import generactive.model.enums.Resolution;
@@ -51,8 +52,8 @@ public class Main {
 
         //This is for console input flow
         //You can uncomment this part of code below to use console input
-//        ItemCreator.create();
+        ItemCreator.create();
 
-        Storage.printAllGroups();
+//        Storage.printAllGroups();
     }
 }

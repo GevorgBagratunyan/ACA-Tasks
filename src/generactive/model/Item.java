@@ -1,6 +1,6 @@
 package generactive.model;
 
-public class Item {
+public abstract class Item {
     private final int id;
     private final String name;
     private final double price;
@@ -43,4 +43,6 @@ public class Item {
         System.out.println("Item ID : " + this.id);
         System.out.println("____________________");
     }
+
+    public abstract double calculatePrice();
 }

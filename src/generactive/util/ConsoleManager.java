@@ -25,15 +25,34 @@ public class ConsoleManager {
 
     //At first in console we collect all required information about Group
     public static void readGroup() {
-        System.out.println("Please Enter the name of Group");
-        groupName = SCANNER.nextLine();
 
-        System.out.println("Please Enter the ID of the parent group, or press 'Enter'");
-        String id = SCANNER.nextLine();
-        if (!id.isEmpty()) {
-            int groupID = Integer.parseInt(id);
-            parentGroup = Storage.getByID(groupID);
+        //Initialising group name
+        System.out.println("Please Enter the name of Group");
+        while (true) {
+            groupName = SCANNER.nextLine();
+            if (!groupName.isEmpty()) {
+                break;
+            } else System.out.println("You entered empty name, please reenter");
         }
+
+        //Initializing parent group ID if it exists
+        System.out.println("Please Enter the ID of the parent group, or press 'Enter'");
+        while (true) {
+            int groupID;
+            String id = SCANNER.nextLine();
+            if(id.isEmpty()) {
+                break;
+            }else if(isNumeric(id) && !id.isEmpty()){
+                groupID = Integer.parseInt(id);
+                if(groupID>0){
+                    parentGroup = Storage.getByID(groupID);
+                    break;
+                } else System.out.println("Negative digit not allowed");
+            }  else {
+                System.out.println("You entered wrong data, please input only digits");
+            }
+        }
+
 
         System.out.println("Please input 'continue' if You want to finish creation of groups, and go to next step, or press 'Enter'");
         userCommand = SCANNER.nextLine().toUpperCase();
@@ -86,6 +105,18 @@ public class ConsoleManager {
         //command
         System.out.println("Please input 'exit' if You want to finish adding Items, or press 'Enter'");
         userCommand = SCANNER.nextLine().toUpperCase();
+    }
+
+    public static boolean isNumeric(String s) {
+        if (s == null) {
+            return false;
+        }
+        try {
+            int d = Integer.parseInt(s);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 
     public static String getUserCommand() {
