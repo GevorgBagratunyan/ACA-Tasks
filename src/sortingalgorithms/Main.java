@@ -40,7 +40,7 @@ public class Main {
         System.out.println("\n");
 
         //block 2
-        ComparableDataSorter.quickSort(list,0,list.size()-1);
+        ComparableDataSorter.quickSort(list, 0, list.size() - 1);
         System.out.print("List AFTER Generic Quick sort : ");
         for (Test t : list) {
             System.out.print(t.getDigit() + " ");

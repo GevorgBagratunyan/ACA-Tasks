@@ -5,7 +5,6 @@ import java.util.List;
 public class ComparableDataSorter {
 
     private ComparableDataSorter() {
-
     }
 
     //Insertion sort
