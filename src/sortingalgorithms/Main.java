@@ -29,11 +29,10 @@ public class Main {
         }
         System.out.println("\n");
 
-        ComparableDataSorter<Test> sorter = new ComparableDataSorter<>();
 
         //Comment block 1 or 2 to see result of each sorter algorithm
         //block 1
-        sorter.insertionSort(list);
+        ComparableDataSorter.insertionSort(list);
         System.out.print("List AFTER Generic Insertion sort : ");
         for (Test t : list) {
             System.out.print(t.getDigit() + " ");
@@ -41,7 +40,7 @@ public class Main {
         System.out.println("\n");
 
         //block 2
-        sorter.quickSort(list,0,list.size()-1);
+        ComparableDataSorter.quickSort(list,0,list.size()-1);
         System.out.print("List AFTER Generic Quick sort : ");
         for (Test t : list) {
             System.out.print(t.getDigit() + " ");
