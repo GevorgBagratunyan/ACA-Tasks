@@ -5,6 +5,7 @@ import generactive.model.enums.Complexity;
 import generactive.model.enums.Resolution;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ConsoleManager {
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -42,7 +43,7 @@ public class ConsoleManager {
             String id = SCANNER.nextLine();
             if(id.isEmpty()) {
                 break;
-            }else if(isNumeric(id) && !id.isEmpty()){
+            }else if(isValidNumeric(id) && !id.isEmpty()){
                 groupID = Integer.parseInt(id);
                 if(groupID>0){
                     parentGroup = Storage.getByID(groupID);
@@ -107,16 +108,12 @@ public class ConsoleManager {
         userCommand = SCANNER.nextLine().toUpperCase();
     }
 
-    public static boolean isNumeric(String s) {
-        if (s == null) {
-            return false;
-        }
-        try {
-            int d = Integer.parseInt(s);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-        return true;
+    public static boolean isValidNumeric(String s){
+        String regex = "[0-9]";
+        Pattern pattern = Pattern.compile(regex);
+        if(pattern.matcher(s).matches()){
+            return true;
+        } else return false;
     }
 
     public static String getUserCommand() {
