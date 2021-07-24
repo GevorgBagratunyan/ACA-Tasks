@@ -4,48 +4,43 @@ public class OperatorExpression implements Expression {
 
     private Expression left, right;
     private char operator;
-    private String expression;
-
-    public OperatorExpression(String expression) {
-        this.expression = expression;
-    }
 
     @Override
-    public double calculate(){
-        int index = indexOfOperator(expression); // index==0 only when operator is '-'
-        if (index==-1){
+    public double calculate(String expression) {
+        int index = indexOfOperator(expression);
+        if (index == -1) {
             return Double.parseDouble(expression);
-        }  else operator = expression.charAt(index);
+        } else operator = expression.charAt(index);
 
         String l = expression.substring(0, index);
         String r;
-        if(operator=='-'){
-            r = expression.substring(index);
+        if (operator == '-') {
+            r = expression.substring(index); //parsing right substring with '-' operator
         } else {
-            r = expression.substring(index+1);
+            r = expression.substring(index + 1); //parsing right substring without operator
         }
 
-        left = new OperatorExpression(l);
-        right = new OperatorExpression(r);
-        return applyOp(left.calculate(), right.calculate(), operator);
+        left = new OperatorExpression();
+        right = new OperatorExpression();
+        return evaluate(left.calculate(l), right.calculate(r), operator);
     }
 
     public int indexOfOperator(String expression) {
 
-        if (expression.indexOf("+")>0) {
+        if (expression.indexOf("+") != -1) {
             return expression.indexOf("+");
-        } else if(expression.indexOf("-")==0 && expression.indexOf("-",1)>0){
-            return expression.indexOf("-",1);
-        } else if (expression.indexOf("-")>0) {
+        } else if (expression.indexOf("-") == 0 && expression.indexOf("-", 1) > 0) {
+            return expression.indexOf("-", 1);
+        } else if (expression.indexOf("-") > 0) {
             return expression.indexOf("-");
-        } else if (expression.indexOf("/")>0) {
+        } else if (expression.indexOf("/") != -1) {
             return expression.indexOf("/");
-        } else if (expression.indexOf("*")>0) {
+        } else if (expression.indexOf("*") != -1) {
             return expression.indexOf("*");
-        }else return -1;
+        } else return -1;
     }
 
-    private double applyOp(double a, double b, char op) {
+    private double evaluate(double a, double b, char op) {
         switch (op) {
             case '+':
             case '-':
@@ -55,7 +50,7 @@ public class OperatorExpression implements Expression {
             case '/':
                 return a / b;
             default:
-                throw new IllegalArgumentException("wrong type of operation character");
+                throw new IllegalArgumentException("wrong type of operator");
         }
     }
 }
