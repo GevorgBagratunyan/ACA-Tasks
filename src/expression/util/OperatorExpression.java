@@ -15,9 +15,9 @@ public class OperatorExpression implements Expression {
         String l = expression.substring(0, index);
         String r;
         if (operator == '-') {
-            r = expression.substring(index); //parsing right substring with '-' operator
+            r = expression.substring(index); //parsing right substring with '-' operator.
         } else {
-            r = expression.substring(index + 1); //parsing right substring without operator
+            r = expression.substring(index + 1); //parsing right substring without operator.
         }
 
         left = new OperatorExpression();
