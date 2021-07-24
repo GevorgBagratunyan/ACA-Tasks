@@ -11,28 +11,45 @@ public class OperatorExpression implements Expression {
     }
 
     @Override
-    public double calculate() {
-        if (expression.matches("[0-9]+"))
+    public double calculate(){
+        int index = indexOfOperator(expression); // index==0 only when operator is '-'
+        if (index==-1){
             return Double.parseDouble(expression);
-        for (int i = 0; i < expression.length(); i++) {
-            if (expression.charAt(i) == '+' || expression.charAt(i) == '-' || expression.charAt(i) == '*' || expression.charAt(i) == '/') {
-                operator = expression.charAt(i);
-                String l = expression.substring(0, i);
-                String r = expression.substring(i + 1);
-                left = new ValueExpression(l);
-                right = new OperatorExpression(r);
-                return applyOp(left.calculate(), right.calculate(), operator);
-            }
+        }  else operator = expression.charAt(index);
+
+        String l = expression.substring(0, index);
+        String r;
+        if(operator=='-'){
+            r = expression.substring(index);
+        } else {
+            r = expression.substring(index+1);
         }
-        return 0;
+
+        left = new OperatorExpression(l);
+        right = new OperatorExpression(r);
+        return applyOp(left.calculate(), right.calculate(), operator);
+    }
+
+    public int indexOfOperator(String expression) {
+
+        if (expression.indexOf("+")>0) {
+            return expression.indexOf("+");
+        } else if(expression.indexOf("-")==0 && expression.indexOf("-",1)>0){
+            return expression.indexOf("-",1);
+        } else if (expression.indexOf("-")>0) {
+            return expression.indexOf("-");
+        } else if (expression.indexOf("/")>0) {
+            return expression.indexOf("/");
+        } else if (expression.indexOf("*")>0) {
+            return expression.indexOf("*");
+        }else return -1;
     }
 
     private double applyOp(double a, double b, char op) {
         switch (op) {
             case '+':
-                return a + b;
             case '-':
-                return a - b;
+                return a + b;
             case '*':
                 return a * b;
             case '/':
