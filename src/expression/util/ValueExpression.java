@@ -6,7 +6,7 @@ public class ValueExpression implements Expression {
     private double value;
 
     @Override
-    public double calculate(String expression) {
+    public double calculate() {
         return 0;
     }
 
