@@ -1,6 +1,6 @@
 package generactive.model;
 
-import generactive.util.Storage;
+import generactive.storage.Storage;
 
 public class StockItem extends Item {
 
@@ -9,7 +9,7 @@ public class StockItem extends Item {
     }
 
     public double calculatePrice() {
-        double price = this.getPrice();
+        double price = this.getBasePrice();
         double resolutionCoefficient = this.getConfiguration().getResolution().getResolutionCoefficient();
         return price * resolutionCoefficient;
     }

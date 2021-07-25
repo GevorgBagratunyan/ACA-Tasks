@@ -1,4 +1,4 @@
-package generactive.util;
+package generactive.storage;
 
 import generactive.model.Group;
 import generactive.model.Item;
@@ -10,7 +10,7 @@ public class Storage {
     private static int groupID = 0;
     private static int itemID = 0;
     private static final Map<Integer, Group> GROUPS = new HashMap<>();
-    private static final Map<String, Item> ITEMS = new HashMap<>();
+    private static final Map<Integer, Item> ITEMS = new HashMap<>();
 
     private Storage() {
     }
@@ -23,12 +23,8 @@ public class Storage {
         GROUPS.put(group.getId(), group);
     }
 
-    public static Item getByName(String itemName) {
-        return ITEMS.get(itemName);
-    }
-
     public static void addItem(Item item) {
-        ITEMS.put(item.getName(), item);
+        ITEMS.put(item.getId(), item);
     }
 
     public static int getNextGroupID() {
@@ -46,7 +42,7 @@ public class Storage {
     }
 
     public static void printAllItems() {
-        for (Map.Entry<String, Item> pair : ITEMS.entrySet()) {
+        for (Map.Entry<Integer, Item> pair : ITEMS.entrySet()) {
             pair.getValue().printContent();
         }
     }

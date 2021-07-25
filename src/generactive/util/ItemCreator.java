@@ -7,6 +7,7 @@ import generactive.model.GenerativeItem;
 import generactive.model.StockItem;
 import generactive.model.enums.Complexity;
 import generactive.model.enums.Resolution;
+import generactive.storage.Storage;
 
 public class ItemCreator {
 
@@ -23,7 +24,7 @@ public class ItemCreator {
                     .build();
 
             if (parentGroup != null) {
-                parentGroup.getSubGroups().add(group);
+                parentGroup.addGroup(group);
             }
             Storage.addGroup(group);
 
@@ -33,8 +34,7 @@ public class ItemCreator {
                 double itemPrice = ConsoleManager.getPrice();
                 Resolution resolution = ConsoleManager.getResolution();
                 Complexity complexity = ConsoleManager.getComplexity();
-                Configuration cfg = new Configuration();
-                cfg.setResolution(resolution);
+                Configuration cfg = new Configuration(resolution);
                 Item item;
 
                 if (complexity == null) {
@@ -56,7 +56,7 @@ public class ItemCreator {
                             .build();
                 }
 
-                group.getItems().add(item);
+                group.addItem(item);
 
                 if (ConsoleManager.getUserCommand().equals("EXIT")) {
                     break;

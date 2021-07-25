@@ -1,6 +1,6 @@
 package generactive.model;
 
-import generactive.util.Storage;
+import generactive.storage.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,33 +32,40 @@ public class Group {
         return parent;
     }
 
-    public List<Group> getSubGroups() {
-        return subGroups;
+    public void addGroup(Group group) {
+        subGroups.add(group);
     }
 
-    public List<Item> getItems() {
-        return items;
+    public void addItem(Item item) {
+        items.add(item);
     }
-
 
     public void printContent() {
         System.out.println("Group ID : " + id + "\nName : " + name);
-        System.out.print("Items in this Group -> ");
+        System.out.println("Items in this Group : ");
 
         if (!items.isEmpty()) {
             for (Item item : items) {
-                System.out.print(item.getName() + " ");
+                item.printContent();
             }
         } else System.out.println();
 
         System.out.println();
-        System.out.println("Subgroups in this Group -> ");
+        System.out.println("Subgroups in this Group : ");
         if (!subGroups.isEmpty()) {
             for (Group group : subGroups) {
-                group.printContent();
+                System.out.printf("  GROUP - id: {%d} Name: {%s}%n", group.getId(), group.getName());
+                System.out.println("  Items in this group : ");
+                group.printItems();
             }
         } else System.out.println();
         System.out.println("____________________");
+    }
+
+    public void printItems() {
+        for(Item item : items){
+            item.printContent();
+        }
     }
 
     public static class GroupBuilder {
@@ -89,7 +96,7 @@ public class Group {
             return this;
         }
 
-        public GroupBuilder addSubgroup(Group group){
+        public GroupBuilder addSubgroup(Group group) {
             this.subGroups.add(group);
             return this;
         }

@@ -1,7 +1,7 @@
 package generactive.model;
 
 import generactive.model.enums.Complexity;
-import generactive.util.Storage;;
+import generactive.storage.Storage;
 
 public class GenerativeItem extends Item {
 
@@ -13,7 +13,7 @@ public class GenerativeItem extends Item {
     }
 
     public double calculatePrice() {
-        double price = this.getPrice();
+        double price = this.getBasePrice();
         double resolutionCoefficient = this.getConfiguration().getResolution().getResolutionCoefficient();
         double comp = complexity.getValue();
         return price * resolutionCoefficient * comp;

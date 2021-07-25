@@ -3,6 +3,7 @@ package generactive.util;
 import generactive.model.Group;
 import generactive.model.enums.Complexity;
 import generactive.model.enums.Resolution;
+import generactive.storage.Storage;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -43,7 +44,7 @@ public class ConsoleManager {
             String id = SCANNER.nextLine();
             if(id.isEmpty()) {
                 break;
-            }else if(isValidNumeric(id) && !id.isEmpty()){
+            }else if(isValidNumeric(id)){
                 groupID = Integer.parseInt(id);
                 if(groupID>0){
                     parentGroup = Storage.getByID(groupID);
@@ -111,9 +112,7 @@ public class ConsoleManager {
     public static boolean isValidNumeric(String s){
         String regex = "[0-9]";
         Pattern pattern = Pattern.compile(regex);
-        if(pattern.matcher(s).matches()){
-            return true;
-        } else return false;
+        return pattern.matcher(s).matches();
     }
 
     public static String getUserCommand() {

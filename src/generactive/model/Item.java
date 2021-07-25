@@ -3,14 +3,14 @@ package generactive.model;
 public abstract class Item {
     private final int id;
     private final String name;
-    private final double price;
+    private final double basePrice;
     private final Group group;
     private final Configuration configuration;
 
 
-    public Item(int id, String name, double price, Group group, Configuration configuration) {
+    public Item(int id, String name, double basePrice, Group group, Configuration configuration) {
         this.name = name;
-        this.price = price;
+        this.basePrice = basePrice;
         this.group = group;
         this.id = id;
         this.configuration = configuration;
@@ -20,8 +20,8 @@ public abstract class Item {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public double getBasePrice() {
+        return basePrice;
     }
 
     public Group getGroup() {
@@ -37,11 +37,10 @@ public abstract class Item {
     }
 
     public void printContent() {
-        System.out.println("Item group : " + this.group.getName());
-        System.out.println("Item name : " + this.name);
-        System.out.println("Item price : " + this.price);
-        System.out.println("Item ID : " + this.id);
-        System.out.println("____________________");
+        System.out.println("    Item group : " + this.group.getName());
+        System.out.println("    Item name : " + this.name);
+        System.out.println("    Item price : " + this.basePrice);
+        System.out.println("    Item ID : " + this.id);
     }
 
     public abstract double calculatePrice();

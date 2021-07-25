@@ -14,11 +14,7 @@ public class Basket {
     public double totalPrice() {
         double total = 0.0;
         for (Item item : items) {
-            if (item instanceof StockItem) {
-                total += ((StockItem) item).calculatePrice();
-            } else {
-                total += ((GenerativeItem) item).calculatePrice();
-            }
+            total += item.calculatePrice();
         }
         System.out.println(total);
         return total;
@@ -26,9 +22,9 @@ public class Basket {
 
     public void calculatePrice(Item item) {
         if (item instanceof StockItem) {
-            System.out.println(((StockItem) item).calculatePrice());
+            System.out.println(item.calculatePrice());
         } else {
-            System.out.println(((GenerativeItem) item).calculatePrice());
+            System.out.println(item.calculatePrice());
         }
     }
 
