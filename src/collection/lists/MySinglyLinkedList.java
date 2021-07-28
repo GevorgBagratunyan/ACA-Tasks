@@ -1,6 +1,8 @@
 package collection.lists;
 
-public class MySinglyLinkedList<T> {
+import java.util.Iterator;
+
+public class MySinglyLinkedList<T> implements Iterable<T> {
 
     private static int mainIndex = 0;
     private int size = 0;
@@ -91,4 +93,23 @@ public class MySinglyLinkedList<T> {
 
     }
 
+    //Implementing Iterable interface
+    @Override
+    public Iterator<T> iterator() {
+
+        return new Iterator<T>() {
+            Node<T> current = first;
+            @Override
+            public boolean hasNext() {
+                return current !=null;
+            }
+
+            @Override
+            public T next() {
+                T obj = current.obj;
+                current = current.next;
+                return obj;
+            }
+        };
+    }
 }

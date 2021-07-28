@@ -1,7 +1,5 @@
 package collection.lists;
 
-import collection.iteratiors.MyArrayListIterator;
-
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -10,6 +8,7 @@ public class MyArrayList<T> implements Iterable<T>{
     private T[] array;
     private int capacity;
     private int size = 0;
+    private int index = 0;
     private final static int DEFAULT_CAPACITY = 10;
 
     public MyArrayList(int capacity) {
@@ -114,9 +113,24 @@ public class MyArrayList<T> implements Iterable<T>{
         array = Arrays.copyOf(array, newCapacity);
     }
 
+    //Implementing Iterable interface
     @Override
     public Iterator<T> iterator() {
-        return new MyArrayListIterator(this);
-    }
 
+       return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                if(index>=array.length){
+                    return false;
+                }else return array[index] != null;
+
+
+            }
+
+            @Override
+            public T next() {
+                return array[index++];
+            }
+        };
+    }
 }
