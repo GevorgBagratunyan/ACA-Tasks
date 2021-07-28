@@ -3,7 +3,7 @@ package collection.lists;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class MyArrayList<T> implements Iterable<T>{
+public class MyArrayList<T> implements Iterable<T> {
 
     private T[] array;
     private int capacity;
@@ -117,12 +117,12 @@ public class MyArrayList<T> implements Iterable<T>{
     @Override
     public Iterator<T> iterator() {
 
-       return new Iterator<T>() {
+        return new Iterator<T>() {
             @Override
             public boolean hasNext() {
-                if(index>=array.length){
+                if (index >= array.length) {
                     return false;
-                }else return array[index] != null;
+                } else return array[index] != null;
 
 
             }

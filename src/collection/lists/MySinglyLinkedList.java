@@ -56,7 +56,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
             previous = current;
             current = current.next;
         }
-        if(current == null){
+        if (current == null) {
             return null;
         } else if (first == current) {
             first = current.next;
@@ -99,9 +99,10 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 
         return new Iterator<T>() {
             Node<T> current = first;
+
             @Override
             public boolean hasNext() {
-                return current !=null;
+                return current != null;
             }
 
             @Override

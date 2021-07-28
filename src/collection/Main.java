@@ -20,7 +20,7 @@ public class Main {
         System.out.println("Removing..... " + singlyList.removeElement("One"));
         System.out.println("Size of singlyList after deleting one item is : " + singlyList.size());
         System.out.println("printing items in LinkedList");
-        for(String s:singlyList) {
+        for (String s : singlyList) {
             System.out.println(s);
         }
         while (!singlyList.isEmpty()) {
@@ -34,18 +34,18 @@ public class Main {
         arrayList.add("One");
         arrayList.add("Two");
         arrayList.add("Three");
-        arrayList.add(1,"Four");
-        arrayList.add(0,"Five");
-        arrayList.add(2,"Six");
+        arrayList.add(1, "Four");
+        arrayList.add(0, "Five");
+        arrayList.add(2, "Six");
 
         System.out.println("printing items in ArrayList");
-        for(String s : arrayList) {
+        for (String s : arrayList) {
             System.out.println(s);
         }
 
         arrayList.remove(3);
         System.out.println("printing items in ArrayList after removing one element");
-        for(int i=0;i<arrayList.size();i++) {
+        for (int i = 0; i < arrayList.size(); i++) {
             System.out.println(arrayList.get(i));
         }
 
