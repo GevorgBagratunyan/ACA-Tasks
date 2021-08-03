@@ -1,5 +1,6 @@
 package anagramchecker;
 
+
 import anagramchecker.util.StringUtil;
 
 public class Main {

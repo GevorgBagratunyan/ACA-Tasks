@@ -1,8 +1,8 @@
 package collection;
 
+
 import collection.lists.MyArrayList;
 import collection.lists.MySinglyLinkedList;
-
 
 public class Main {
     public static void main(String[] args) {
