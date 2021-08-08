@@ -14,12 +14,12 @@ public class Main {
         BathroomUser woman3 = new Woman("Woman 3", bathroom);
 
         try {
-            man1.thread.join();
-            man2.thread.join();
-            man3.thread.join();
-            woman1.thread.join();
-            woman2.thread.join();
-            woman3.thread.join();
+            man1.getThread().join();
+            man2.getThread().join();
+            man3.getThread().join();
+            woman1.getThread().join();
+            woman2.getThread().join();
+            woman3.getThread().join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

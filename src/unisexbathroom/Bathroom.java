@@ -3,7 +3,7 @@ package unisexbathroom;
 import java.util.concurrent.Semaphore;
 
 public class Bathroom {
-    Semaphore semaphore;
+    private final Semaphore semaphore;
     private boolean isManInBathroom = false;
     private boolean isManTryingToEnter = false;
     private boolean isBathroomEmpty = true;
@@ -43,5 +43,9 @@ public class Bathroom {
         }
 
         return (isManTryingToEnter && isManInBathroom) || (!isManInBathroom && !isManTryingToEnter);
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
     }
 }

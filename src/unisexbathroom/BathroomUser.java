@@ -1,9 +1,9 @@
 package unisexbathroom;
 
 public class BathroomUser implements Runnable {
-    private String name;
-    private Bathroom bathroom;
-    Thread thread;
+    private final String name;
+    private final Bathroom bathroom;
+    private final Thread thread;
 
     public BathroomUser(String name, Bathroom bathroom) {
         this.name = name;
@@ -25,18 +25,18 @@ public class BathroomUser implements Runnable {
 
             if(bathroom.isAllowed()){
                 try {
-                    bathroom.semaphore.acquire();
+                    bathroom.getSemaphore().acquire();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 bathroom.useBathroom();
-                bathroom.semaphore.release();
+                bathroom.getSemaphore().release();
             }
 
         }
     }
 
-    public String getName() {
-        return name;
+    public Thread getThread() {
+        return thread;
     }
 }
