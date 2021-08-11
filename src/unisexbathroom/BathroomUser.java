@@ -26,11 +26,15 @@ public class BathroomUser implements Runnable {
             if(bathroom.isAllowed()){
                 try {
                     bathroom.getSemaphore().acquire();
+                    bathroom.setIsManInBathroom(this.name.toLowerCase().startsWith("man"));
+                    bathroom.incrCount();
+                    bathroom.useBathroom();
+                    bathroom.decrCount();
+                    bathroom.getSemaphore().release();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                bathroom.useBathroom();
-                bathroom.getSemaphore().release();
+
             }
 
         }

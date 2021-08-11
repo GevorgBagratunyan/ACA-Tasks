@@ -3,7 +3,7 @@ package unisexbathroom;
 import java.util.concurrent.Semaphore;
 
 public class Bathroom {
-    private final Semaphore semaphore;
+    private Semaphore semaphore;
     private boolean isManInBathroom = false;
     private boolean isManTryingToEnter = false;
     private boolean isBathroomEmpty = true;
@@ -14,9 +14,11 @@ public class Bathroom {
     }
 
     public void useBathroom() {
-        isManInBathroom = Thread.currentThread().getName().toLowerCase().startsWith("man");
+        if(!isAllowed()) {
+            return;
+        }
         System.out.println(Thread.currentThread().getName() + " entered. "
-                + "\n******* count of users is: " + ++count + " ********");
+                + "\n******* count of users is: " + count + " ********");
 
         //Doing some stuff...
         try {
@@ -26,26 +28,35 @@ public class Bathroom {
         }
 
         System.out.println(Thread.currentThread().getName() + " came out.");
-        count--;
     }
 
     //This method checks if all conditions are met, so that the user can use the Bathroom
     public synchronized boolean isAllowed() {
-
-        isManTryingToEnter = Thread.currentThread().getName().toLowerCase().startsWith("man");
-
         if (count == 0) {
             isBathroomEmpty = true;
-            isManInBathroom = Thread.currentThread().getName().toLowerCase().startsWith("man");
             return true;
         } else {
             isBathroomEmpty = false;
         }
 
+        isManTryingToEnter = Thread.currentThread().getName().toLowerCase().startsWith("man");
+
         return (isManTryingToEnter && isManInBathroom) || (!isManInBathroom && !isManTryingToEnter);
     }
 
-    public Semaphore getSemaphore() {
+    public synchronized Semaphore getSemaphore() {
         return semaphore;
+    }
+
+    public synchronized void setIsManInBathroom(boolean isMan) {
+        isManInBathroom=isMan;
+    }
+
+    public synchronized void incrCount() {
+        count++;
+    }
+
+    public synchronized void decrCount() {
+        count--;
     }
 }
