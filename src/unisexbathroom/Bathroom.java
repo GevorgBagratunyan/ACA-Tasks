@@ -6,7 +6,6 @@ public class Bathroom {
     private Semaphore semaphore;
     private boolean isManInBathroom = false;
     private boolean isManTryingToEnter = false;
-    private boolean isBathroomEmpty = true;
     private int count = 0;
 
     public Bathroom(int numOfUsers) {
@@ -14,7 +13,7 @@ public class Bathroom {
     }
 
     public void useBathroom() {
-        if(!isAllowed()) {
+        if (!isAllowed()) {
             return;
         }
         System.out.println(Thread.currentThread().getName() + " entered. "
@@ -32,16 +31,15 @@ public class Bathroom {
 
     //This method checks if all conditions are met, so that the user can use the Bathroom
     public synchronized boolean isAllowed() {
-        if (count == 0) {
-            isBathroomEmpty = true;
+
+        //when available permits equals 3 it means that the bathroom is empty and allowed to everyone
+        if (semaphore.availablePermits() == 3) {
             return true;
-        } else {
-            isBathroomEmpty = false;
         }
 
         isManTryingToEnter = Thread.currentThread().getName().toLowerCase().startsWith("man");
 
-        return (isManTryingToEnter && isManInBathroom) || (!isManInBathroom && !isManTryingToEnter);
+        return (isManTryingToEnter && isManInBathroom) || (!isManTryingToEnter && !isManInBathroom);
     }
 
     public synchronized Semaphore getSemaphore() {
@@ -49,7 +47,7 @@ public class Bathroom {
     }
 
     public synchronized void setIsManInBathroom(boolean isMan) {
-        isManInBathroom=isMan;
+        isManInBathroom = isMan;
     }
 
     public synchronized void incrCount() {
